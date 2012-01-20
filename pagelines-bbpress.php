@@ -16,10 +16,22 @@ class PageLinesBBPress {
 		if ( ! function_exists( 'is_bbpress' ) )
 			return;
 		add_filter( 'pagelines_meta_blacklist', array( &$this, 'remove_meta' ), 10, 1 );
+		add_filter( 'pagelines_lesscode', array( &$this, 'bb_less' ), 10, 1 );
 		add_action( 'wp_print_styles', array( &$this, 'head_css' ) );
 		add_filter( 'postsmeta_settings_array', array( &$this, 'bb_meta' ), 10, 1 );
 		add_filter( 'pagelines_sections_dirs', array( &$this, 'bb_add_section' ));
 		add_action( 'template_redirect', array( &$this, 'bb_integration' ) );	
+	}
+	
+	/**
+	 *	Include less file
+	 */
+	function bb_less( $less ) {
+		
+		
+		$less .= pl_file_get_contents( sprintf( '%s/color.less', plugin_dir_path( __FILE__ ) ) );
+		
+		return $less;
 	}
 	
 	/**
@@ -29,6 +41,7 @@ class PageLinesBBPress {
 			
 		if ( !is_bbpress() )
 			return;
+		
 		wp_deregister_style( 'bbpress-style' );
 		$style = plugins_url('style.css', __FILE__);
 		wp_register_style('plbb-styles', $style);
