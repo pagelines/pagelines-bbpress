@@ -52,7 +52,7 @@ class PageLinesBBPress {
 	 */
 	function bb_add_section( $dirs ) {
 
-		$dirs['custom'] = sprintf( '%s', plugin_dir_path( __FILE__ ) );
+		$dirs['bbpress'] = sprintf( '%s', plugin_dir_path( __FILE__ ) );
 		
 		return $dirs;
 	}
@@ -130,11 +130,35 @@ function plbb_sections_reset() {
 	$load_sections->pagelines_register_sections( true, false );
 }
 
+function plbb_activate() {
+	
+	$bb_templates = array(
+		'forum_archive',
+		'forum',
+		'topic_archive',
+		'topic',
+		'reply_archive',
+		'reply'
+	);
+	$map = get_option( PAGELINES_TEMPLATE_MAP );
+	
+	foreach ( $bb_templates as $template ) {
+		$map['main']['templates'][$template]['sections'][0] = 'PageLinesBBLoop';
+	}
+	update_option( PAGELINES_TEMPLATE_MAP, $map );
+	plbb_sections_reset();
+}
+
+function plbb_deactivate() {
+	
+	plbb_sections_reset();
+}
+
 /**
  *	Activate/deactivate hooks.
  */
-register_activation_hook( __FILE__ , 'plbb_sections_reset' );
-register_deactivation_hook( __FILE__ , 'plbb_sections_reset' );
+register_activation_hook( __FILE__ , 'plbb_activate' );
+register_deactivation_hook( __FILE__ , 'plbb_deactivate' );
 
 /**
  *	Initiate class
