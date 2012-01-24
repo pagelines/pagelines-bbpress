@@ -8,7 +8,9 @@
 
 /* PageLines bbPress
 -------------------------------------------------------------- */
-
+.forum .hentry-pad{
+	padding: 25px !important;
+}
 
 
 

@@ -15,6 +15,8 @@ class PageLinesBBPress {
 	
 	function __construct() {
 		
+		$this->base_url = sprintf( '%s/%s', WP_PLUGIN_URL,  basename(dirname( __FILE__ )));
+		
 		if ( ! function_exists( 'is_bbpress' ) )
 			return;
 		add_filter( 'pagelines_meta_blacklist', array( &$this, 'remove_meta' ), 10, 1 );
@@ -45,9 +47,14 @@ class PageLinesBBPress {
 			return;
 		
 		wp_deregister_style( 'bbpress-style' );
-		$style = plugins_url('style.css', __FILE__);
-		wp_register_style('plbb-styles', $style);
-		wp_enqueue_style( 'plbb-styles');		
+		
+		
+		
+		$style = sprintf( '%s/%s', $this->base_url, 'style.css' );
+		
+		wp_register_style( 'plbb-styles', $style );
+		wp_enqueue_style( 'plbb-styles' );		
+	
 	}
 	
 	/**
@@ -109,22 +116,22 @@ class PageLinesBBPress {
 		
 		'forum_archive' => array(
 			'metapanel' => $metapanel_options->posts_metapanel( 'forum_archive', 'forum_archive' ),
-			'icon'		=> PL_ADMIN_ICONS.'/equalizer.png'
+			'icon'		=> $this->base_url.'/icon.png'
 		),
 
 		'forum' => array(
 			'metapanel' => $metapanel_options->posts_metapanel( 'forum', 'forum' ),
-			'icon'		=> PL_ADMIN_ICONS.'/equalizer.png'
+			'icon'		=> $this->base_url.'/icon.png'
 		),
 
 		'topic_archive' => array(
 			'metapanel' => $metapanel_options->posts_metapanel( 'topics', 'topics' ),
-			'icon'		=> PL_ADMIN_ICONS.'/equalizer.png'
+			'icon'		=> $this->base_url.'/icon.png'
 		),
 
 		'topic' => array(
 			'metapanel' => $metapanel_options->posts_metapanel( 'topic', 'topic' ),
-			'icon'		=> PL_ADMIN_ICONS.'/equalizer.png'
+			'icon'		=> $this->base_url.'/icon.png'
 		),
 		);
 
