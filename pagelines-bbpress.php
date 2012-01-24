@@ -1,12 +1,14 @@
 <?php
 /*
-Plugin Name: PageLines BBPress
+
+Plugin Name: bbPress for PageLines
 Plugin URI: http://www.pagelines.com/
-Description: Adds support for BBPress
-Version: 0.1
+Description: Adds support for BBPress inside PageLines Framework.
+Version: 0.9.0
 Author: PageLines
 Author URI: http://www.pagelines.com
 PageLines: true
+
 */
 
 class PageLinesBBPress {
