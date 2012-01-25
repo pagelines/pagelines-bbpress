@@ -15,9 +15,7 @@
 #content table tbody tr.even td {
 	background-color: #fff;
 }
-#content table tbody tr.odd td {
-	background-color: #fbfbfb;
-}
+
 
 #content table tbody tr.status-trash.even td,
 #content table tbody tr.status-spam.even td {
@@ -38,10 +36,7 @@ table.bbp-replies tbody tr td {
 	background-color: #fff;
 }
 
-table.bbp-forums th, table.bbp-topics th,
-table.bbp-topic th, table.bbp-replies th {
-	background-color: #f3f3f3;
-}
+
 #content table.bbp-forums tfoot td, #content table.bbp-topics tfoot td,
 #content table.bbp-topic tfoot td, #content table.bbp-replies tfoot td,
 #content table.bbp-replies tr.bbp-reply-header td,

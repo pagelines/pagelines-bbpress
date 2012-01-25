@@ -1,12 +1,27 @@
-@contrast = lighten( @pl-base, @invert-dark  );
-
-@contrast2 = lighten( @contrast, 10 );
-@contrast3 = lighten( @contrast, 15 );
-
-@contrast4 = lighten( @contrast, 20 );
-@contrast5 = lighten( @contrast, 25 );
+@contrast = darken( @pl-base, @invert-dark  );
 
 .odd {	
-	background-color: @contrast4;
+	background-color: @contrast;
 
+}
+
+table.bbp-forums th, table.bbp-topics th,
+table.bbp-topic th, table.bbp-replies th {
+	background-color: darken(@contrast, 4);
+}
+
+#content table tbody tr.odd td {
+	background-color: lighten(@contrast, 4);
+}
+
+#content table tbody tr.even td {
+	background-color: lighten(@contrast, 7);
+}
+
+#content table.bbp-forums tfoot td, #content table.bbp-topics tfoot td,
+#content table.bbp-topic tfoot td, #content table.bbp-replies tfoot td,
+#content table.bbp-replies tr.bbp-reply-header td,
+#content table.bbp-topic tr.bbp-topic-header td{
+	background-color: lighten(@contrast, 2);
+	color: fadeout(@pl-text, 40%);
 }
