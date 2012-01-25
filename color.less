@@ -1,7 +1,7 @@
 @bbpress-contrast = darken( @pl-base, @invert-dark  );
 
 
-.bbp-topic-title a{
+.bbp-topic-title a, .bbp-forum-title{
 	color: @pl-text;
 }
 
@@ -45,8 +45,9 @@ a.bbp-topic-permalink,
 a.bbp-reply-permalink, 
 span.bbp-author-ip, 
 #content .bbp-admin-links, 
-.bbp-template-notice a:hover{
-	color: fadeout(@pl-text, 60%);
+.bbp-template-notice a:hover, 
+.bbp-forum-description{
+	color: fadeout(@pl-text, 50%);
 }
 
 .bbp-template-notice, div.bbp-template-notice.info {
@@ -57,6 +58,6 @@ span.bbp-author-ip,
 #page .bbp-topics-front tr.super-sticky td,
 #page .bbp-topics tr.super-sticky td,
 #page .bbp-topics tr.sticky td,
-#page .bbp-forum-content tr.sticky td {
+#page .bbp-forum-content tr.sticky td{
 	background-color: lighten(@bbpress-contrast, 14);
 }

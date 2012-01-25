@@ -119,7 +119,8 @@ tr td span.bbp-admin-links a:hover {
 	.forum .bbp-topic-title {text-align: left;}
 	.bbp-topics p{display: inline;margin: 0 10px;}
 	.bbp-topic-title .bbp-topic-started-by, .bbp-topic-title .bbp-topic-started-by a{font-size: 11px; }
-	.bbp-topic-title a{
+	.bbp-topic-title a, 
+	.bbp-forum-title{
 		font-size: 1.3em;
 		line-height: 1.6em;
 		
