@@ -1,6 +1,6 @@
 <?php
 /*
-	Section: BB PostLoop
+	Section: bbPressLoop
 	Author: PageLines
 	Author URI: http://www.pagelines.com
 	Description: The Main Posts Loop. Required for BBPress
