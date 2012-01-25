@@ -1,5 +1,11 @@
 @bbpress-contrast = darken( @pl-base, @invert-dark  );
 
+
+.bbp-topic-title a{
+	color: @pl-text;
+}
+
+
 .odd {	
 	background-color: @bbpress-contrast;
 
@@ -38,6 +44,12 @@ span.bbp-admin-links a,
 a.bbp-topic-permalink,
 a.bbp-reply-permalink, 
 span.bbp-author-ip, 
-#content .bbp-admin-links{
+#content .bbp-admin-links, 
+.bbp-template-notice a:hover{
 	color: fadeout(@pl-text, 60%);
+}
+
+.bbp-template-notice, div.bbp-template-notice.info {
+	border: 1px solid darken(@bbpress-contrast, @invert-dark+5);
+	background-color: darken(@bbpress-contrast, @invert-dark+2);
 }
