@@ -98,11 +98,11 @@ tr td span.bbp-admin-links a:hover {
 /* PageLines bbPress
 -------------------------------------------------------------- */
 .forum .hentry-pad{
-	padding: 25px !important;
+	padding: 10px;
 }
 
-.bbp-forums th, .hentry .bbp-topics th{
-	padding: 5px;
+.bbp-forums th, .hentry .bbp-topics th, .hentry .bbp-replies th, .bbp-topics th{
+	padding: 3px;
 	font-weight: normal;
 	font-size: .9em;
 }
@@ -110,7 +110,7 @@ tr td span.bbp-admin-links a:hover {
 	padding: 10px;
 }
 
-.hentry .bbp-forums .bbp-forum-info, .hentry .bbp-topics .bbp-topic-title{
+.hentry .bbp-forums .bbp-forum-info, .bbp-topics .bbp-topic-title, .bbp-topic-title{
 	padding: 10px 15px;
 }
 	.hentry .bbp-topics th, .hentry  .bbp-topics td{
@@ -197,7 +197,7 @@ table.bbp-topic th span, table.bbp-replies th span {
 #content th.bbp-topic-content,
 #content th.bbp-reply-content {
 	text-align: left;
-	padding: 9px 10px 9px 15px;
+	padding: 6px 10px 6px 15px;
 }
 #content table.bbp-forums tfoot td, #content table.bbp-topics tfoot td,
 #content table.bbp-topic tfoot td, #content table.bbp-replies tfoot td,
@@ -355,7 +355,7 @@ a.bbp-reply-permalink {
 .bbp-pagination {
 	float: left;
 	width: 100%;
-	margin-bottom: 20px;
+	margin: 1em 0;
 }
 
 .bbp-topic-pagination {
@@ -404,24 +404,12 @@ a.bbp-reply-permalink {
 	width: 100px;
 }
 
-#content fieldset.bbp-form p,
-#container fieldset.bbp-form p,
-#wrapper fieldset.bbp-form p,
-#content fieldset.bbp-form textarea,
-#container fieldset.bbp-form textarea,
-#wrapper fieldset.bbp-form textarea,
-#content fieldset.bbp-form select,
-#container fieldset.bbp-form select,
-#wrapper fieldset.bbp-form select,
-#content fieldset.bbp-form input,
-#container fieldset.bbp-form input,
-#wrapper fieldset.bbp-form input {
-	margin: 0px 0px 10px;
-}
-
 textarea#bbp_reply_content,
 textarea#bbp_topic_content {
 	width: 100%;
+	min-height: 150px;
+	font-size: .95em;
+	line-height: 1.4em;
 	box-sizing: border-box;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing: border-box;
@@ -585,16 +573,7 @@ input[type="password"] {
 		line-height: 140%;
 	}
 
-/* =Stickies
--------------------------------------------------------------- */
 
-.bbp-topics-front tr.super-sticky td,
-.bbp-topics tr.super-sticky td,
-.bbp-topics tr.sticky td,
-.bbp-forum-content tr.sticky td {
-	background-color: #ffffe0 !important;
-	font-size: 1.1em;
-}
 
 /* =Revisions
 -------------------------------------------------------------- */
