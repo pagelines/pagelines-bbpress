@@ -1,6 +1,5 @@
 <?php
 /*
-
 Plugin Name: bbPress for PageLines
 Plugin URI: http://www.pagelines.com/
 Description: Adds support for BBPress inside PageLines Framework.
@@ -8,7 +7,7 @@ Version: 0.9.0
 Author: PageLines
 Author URI: http://www.pagelines.com
 PageLines: true
-
+Demo: http://demo.pagelines.com/framework/forums/
 */
 
 class PageLinesBBPress {
