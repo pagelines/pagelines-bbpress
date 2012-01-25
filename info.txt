@@ -1,0 +1,19 @@
+== Description ==
+
+**PageLines bbPress Integration** is a plugin designed to provide graphical support and more for the popular WordPress bbPress extension. bbPress is a great way to build a forum on top of a WordPress site and now PageLines is taking it one step farther.
+
+**What's new?** With bbPress + PageLines, you can now have a forum that is completely controlled using PageLines design control and drag and drop. Support multiple forums, topics, and everything you'd expect in a world-class forum.
+
+== Features ==
+* bbPress Forum Support
+* Meta setting support
+* Color control support
+* Use with all of PageLines other features
+
+== Changelog ==
+
+= 1.0.0 =
+* Initial release
+* Added info.txt
+* Added images
+* Color control supported
