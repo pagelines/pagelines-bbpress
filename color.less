@@ -1,27 +1,43 @@
-@contrast = darken( @pl-base, @invert-dark  );
+@bbpress-contrast = darken( @pl-base, @invert-dark  );
 
 .odd {	
-	background-color: @contrast;
+	background-color: @bbpress-contrast;
 
 }
 
 table.bbp-forums th, table.bbp-topics th,
 table.bbp-topic th, table.bbp-replies th {
-	background-color: darken(@contrast, 4);
+	background-color: @bbpress-contrast;
 }
 
 #content table tbody tr.odd td {
-	background-color: lighten(@contrast, 4);
+	background-color: lighten(@bbpress-contrast, 4);
 }
 
 #content table tbody tr.even td {
-	background-color: lighten(@contrast, 7);
+	background-color: lighten(@bbpress-contrast, 7);
 }
 
 #content table.bbp-forums tfoot td, #content table.bbp-topics tfoot td,
 #content table.bbp-topic tfoot td, #content table.bbp-replies tfoot td,
 #content table.bbp-replies tr.bbp-reply-header td,
 #content table.bbp-topic tr.bbp-topic-header td{
-	background-color: lighten(@contrast, 2);
+	background-color: lighten(@bbpress-contrast, 9);
 	color: fadeout(@pl-text, 40%);
+}
+
+#content fieldset.bbp-form,
+#container fieldset.bbp-form,
+#wrapper fieldset.bbp-form {
+	border: 1px solid darken(@bbpress-contrast, 5);
+}
+
+span.bbp-admin-links,
+#content .bbp-admin-links,
+span.bbp-admin-links a, 
+a.bbp-topic-permalink,
+a.bbp-reply-permalink, 
+span.bbp-author-ip, 
+#content .bbp-admin-links{
+	color: fadeout(@pl-text, 60%);
 }

@@ -12,9 +12,6 @@
 #entry-author-info{
 	border-bottom: 1px solid #fff;
 }
-#content table tbody tr.even td {
-	background-color: #fff;
-}
 
 
 #content table tbody tr.status-trash.even td,
@@ -37,33 +34,10 @@ table.bbp-replies tbody tr td {
 }
 
 
-#content table.bbp-forums tfoot td, #content table.bbp-topics tfoot td,
-#content table.bbp-topic tfoot td, #content table.bbp-replies tfoot td,
-#content table.bbp-replies tr.bbp-reply-header td,
-#content table.bbp-topic tr.bbp-topic-header td{
-	background-color: #fafafa;
-	color: #888;
-}
-span.bbp-author-ip, 
-#content .bbp-admin-links {
-	color: #aaa;
-}
-
-span.bbp-admin-links {
-	color: #ddd;
-}
-#content .bbp-admin-links, span.bbp-admin-links a {
-	color: #bbb;
-}
-
 tr td span.bbp-admin-links a:hover {
 	color: #ff4b33;
 }
 
-a.bbp-topic-permalink,
-a.bbp-reply-permalink {
-	color: #ccc;
-}
 #content table tbody tr ul.bbp-forums {
 	border-left: 1px solid #aaa;
 }
@@ -73,11 +47,7 @@ a.bbp-reply-permalink {
 	border: 1px solid #ddd;
 }
 
-#content fieldset.bbp-form,
-#container fieldset.bbp-form,
-#wrapper fieldset.bbp-form {
-	border: 1px solid #eee;
-}
+
 
 
 /* Toggles color */
