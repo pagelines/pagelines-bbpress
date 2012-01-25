@@ -9,9 +9,6 @@
 
 /* Isolate All Colors
 -------------------------------------------------------------- */
-#entry-author-info{
-	border-bottom: 1px solid #fff;
-}
 
 
 #content table tbody tr.status-trash.even td,
@@ -131,6 +128,11 @@ tr td span.bbp-admin-links a:hover {
 	.bbp-form .avatar{display: none;}
 	article.hentry .bbp-reply-content{text-align: left;}
 
+
+/* Overrides for PL integrations
+-------------------------------------------------------------- */
+#page tr.hentry{border: none}
+#page p.bbp-topic-meta {margin:0}
 
 /* =bbPress Style
 -------------------------------------------------------------- */
