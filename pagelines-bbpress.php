@@ -17,8 +17,16 @@ class PageLinesBBPress {
 		
 		$this->base_url = sprintf( '%s/%s', WP_PLUGIN_URL,  basename(dirname( __FILE__ )));
 		
+		$this->base_dir = sprintf( '%s/%s', WP_PLUGIN_DIR,  basename(dirname( __FILE__ )));
+		
+		$this->base_file = sprintf( '%s/%s/%s', WP_PLUGIN_DIR,  basename(dirname( __FILE__ )), basename( __FILE__ ));
+		
+		// register plugin hooks...
+		$this->plugin_hooks();
+		
 		if ( ! function_exists( 'is_bbpress' ) )
 			return;
+
 		add_filter( 'pagelines_meta_blacklist', array( &$this, 'remove_meta' ), 10, 1 );
 		add_filter( 'pagelines_lesscode', array( &$this, 'bb_less' ), 10, 1 );
 		add_action( 'wp_print_styles', array( &$this, 'head_css' ) );
@@ -27,13 +35,23 @@ class PageLinesBBPress {
 		add_action( 'template_redirect', array( &$this, 'bb_integration' ) );	
 	}
 	
+	
+	/**
+	 *	Plugin hooks
+	 */
+	function plugin_hooks() {
+		
+		register_activation_hook( $this->base_file, array( &$this, 'plbb_activate' ) );
+		register_deactivation_hook( $this->base_file, array( &$this, 'plbb_sections_reset' ) );
+	}
+	
 	/**
 	 *	Include less file
 	 */
 	function bb_less( $less ) {
 		
 		
-		$less .= pl_file_get_contents( sprintf( '%s/color.less', plugin_dir_path( __FILE__ ) ) );
+		$less .= pl_file_get_contents( sprintf( '%s/color.less', $this->base_dir ) );
 		
 		return $less;
 	}
@@ -74,7 +92,7 @@ class PageLinesBBPress {
 	 */
 	function bb_add_section( $dirs ) {
 
-		$dirs['bbpress'] = sprintf( '%s', plugin_dir_path( __FILE__ ) );
+		$dirs['bbpress'] = $this->base_dir;
 		
 		return $dirs;
 	}
@@ -140,47 +158,36 @@ class PageLinesBBPress {
 		return $d;
 	}
 
+	/**
+	 *	Reset sections.
+	 */
+	function plbb_sections_reset() {
+
+		global $load_sections;
+		delete_transient( 'pagelines_sections_cache' );
+		$load_sections->pagelines_register_sections( true, false );
+	}
+
+	function plbb_activate() {
+
+		$bb_templates = array(
+			'forum_archive',
+			'forum',
+			'topic_archive',
+			'topic',
+			'reply_archive',
+			'reply'
+		);
+		$map = get_option( PAGELINES_TEMPLATE_MAP );
+
+		foreach ( $bb_templates as $template ) {
+			$map['main']['templates'][$template]['sections'][0] = 'PageLinesBBLoop';
+		}
+		update_option( PAGELINES_TEMPLATE_MAP, $map );
+		$this->plbb_sections_reset();
+	}
 } // /class
 
-/**
- *	Reset sections.
- */
-function plbb_sections_reset() {
-
-	global $load_sections;
-	delete_transient( 'pagelines_sections_cache' );
-	$load_sections->pagelines_register_sections( true, false );
-}
-
-function plbb_activate() {
-	
-	$bb_templates = array(
-		'forum_archive',
-		'forum',
-		'topic_archive',
-		'topic',
-		'reply_archive',
-		'reply'
-	);
-	$map = get_option( PAGELINES_TEMPLATE_MAP );
-	
-	foreach ( $bb_templates as $template ) {
-		$map['main']['templates'][$template]['sections'][0] = 'PageLinesBBLoop';
-	}
-	update_option( PAGELINES_TEMPLATE_MAP, $map );
-	plbb_sections_reset();
-}
-
-function plbb_deactivate() {
-	
-	plbb_sections_reset();
-}
-
-/**
- *	Activate/deactivate hooks.
- */
-register_activation_hook( __FILE__ , 'plbb_activate' );
-register_deactivation_hook( __FILE__ , 'plbb_deactivate' );
 
 /**
  *	Initiate class
