@@ -3,7 +3,7 @@
 Plugin Name: bbPress for PageLines
 Plugin URI: http://www.pagelines.com/
 Description: Adds support for BBPress inside PageLines Framework.
-Version: 1.0.4
+Version: 1.0.5
 Author: PageLines
 Author URI: http://www.pagelines.com
 PageLines: true

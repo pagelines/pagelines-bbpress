@@ -25,6 +25,9 @@ table.bbp-replies tbody tr td {
 	background-color: #fff;
 }
 
+.super-stick{
+	background-color:#c5e6f5;
+}
 
 tr td span.bbp-admin-links a:hover {
 	color: #ff4b33;
@@ -109,7 +112,7 @@ a.submit{
 	padding: 7px;
 }
 
-.bbp-forums th, .hentry .bbp-topics th, .hentry .bbp-replies th, .bbp-topics th{
+.bbp-forums th, .hentry .bbp-topics th, .copy .bbp-replies th, .bbp-topics th{
 	padding: 3px;
 	font-weight: normal;
 	font-size: .9em;
@@ -128,7 +131,6 @@ a.submit{
 	body.bbPress #postnav, body.bbPress .metabar{display: none;}
 
 	.forum .bbp-topic-title {text-align: left;}
-	.bbp-topics p{display: inline;margin: 0 10px;}
 	.bbp-topic-title .bbp-topic-started-by, .bbp-topic-title .bbp-topic-started-by a{font-size: 11px; }
 	
 	.bbp-topic-title a, 
@@ -138,11 +140,17 @@ a.submit{
 		
 	}
 		
+		.bbp-topic-meta{
+			display: block;
+			line-height: 1em;
+		}
+		
 		.bbp-topic-voice-count, 
 		.bbp-topic-reply-count, 
 		.bbp-topic-freshness, 
 		#content p.bbp-topic-meta, 
-		#content p.bbp-topic-meta a{
+		#content p.bbp-topic-meta a, 
+		.bbp-forum-description{
 			font-family: 'Lucida Grande', arial, helvetica;
 			font-size: .9em;
 		}

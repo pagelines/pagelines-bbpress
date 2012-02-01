@@ -4,7 +4,7 @@
 	color: @pl-text;
 }
 
-#bbloop .odd{	
+#bbloop .odd, .bbp-topics .odd{	
 	background-color: @bbpress-contrast;
 }
 
@@ -46,7 +46,9 @@ a.bbp-reply-permalink,
 span.bbp-author-ip, 
 #content .bbp-admin-links, 
 .bbp-template-notice a:hover, 
-.bbp-forum-description{
+.bbp-forum-description, 
+.bbp-topic-meta,
+.bbp-topic-meta a{
 	color: fadeout(@pl-text, 50%);
 }
 
@@ -59,5 +61,5 @@ span.bbp-author-ip,
 #page .bbp-topics tr.super-sticky td,
 #page .bbp-topics tr.sticky td,
 #page .bbp-forum-content tr.sticky td{
-	background-color: lighten(@bbpress-contrast, 14);
+	background-color: spin(darken(@bbpress-contrast, 5), 15);
 }
