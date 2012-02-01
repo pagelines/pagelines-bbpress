@@ -45,6 +45,14 @@ tr td span.bbp-admin-links a:hover {
 	box-shadow:none;
 }
 
+a.submit{
+	background: transparent;
+	border:none;
+	display: inline;
+	padding: 0;
+	box-shadow: none;
+}
+
 
 /* Toggles color */
 .bbp-topic-action #favorite-toggle a {
@@ -97,7 +105,7 @@ tr td span.bbp-admin-links a:hover {
 	padding: 10px;
 }
 
-.widget_display_replies li{
+.widget_display_replies ul li{
 	padding: 7px;
 }
 
