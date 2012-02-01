@@ -20,11 +20,6 @@
 	background-color: #fdd;
 }
 
-table.bbp-topic tbody tr td,
-table.bbp-replies tbody tr td {
-	background-color: #fff;
-}
-
 .super-stick{
 	background-color:#c5e6f5;
 }
@@ -42,6 +37,8 @@ tr td span.bbp-admin-links a:hover {
 	border: 1px solid #ddd;
 }
 
+
+.bbPress #page .current_page_parent a{background: transparent;}
 
 /* Inputs */ 
 .bbp-login-form input, .bbp-login-form input[type="password"]{
@@ -108,7 +105,7 @@ a.submit{
 	padding: 10px;
 }
 
-.widget_display_replies ul li{
+.widget.widget_display_replies ul li{
 	padding: 7px;
 }
 
@@ -134,7 +131,7 @@ a.submit{
 	.bbp-topic-title .bbp-topic-started-by, .bbp-topic-title .bbp-topic-started-by a{font-size: 11px; }
 	
 	.bbp-topic-title a, 
-	#bbLoop .bbp-forum-title{
+	.forum .bbp-forum-title{
 		font-size: 1.3em;
 		line-height: 1.6em;
 		
@@ -155,7 +152,7 @@ a.submit{
 			font-size: .9em;
 		}
 		
-		#content p.bbp-topic-meta, #content p.bbp-topic-meta a {
+		#content p.bbp-topic-meta, #content p.bbp-topic-meta a, .bbp-forum-description{
 			margin-bottom: 0;
 			font-size: 10px;
 			
