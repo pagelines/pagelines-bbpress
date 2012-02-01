@@ -40,6 +40,10 @@ tr td span.bbp-admin-links a:hover {
 }
 
 
+/* Inputs */ 
+.bbp-login-form input, .bbp-login-form input[type="password"]{
+	box-shadow:none;
+}
 
 
 /* Toggles color */
@@ -93,6 +97,10 @@ tr td span.bbp-admin-links a:hover {
 	padding: 10px;
 }
 
+.widget_display_replies li{
+	padding: 7px;
+}
+
 .bbp-forums th, .hentry .bbp-topics th, .hentry .bbp-replies th, .bbp-topics th{
 	padding: 3px;
 	font-weight: normal;
@@ -114,12 +122,28 @@ tr td span.bbp-admin-links a:hover {
 	.forum .bbp-topic-title {text-align: left;}
 	.bbp-topics p{display: inline;margin: 0 10px;}
 	.bbp-topic-title .bbp-topic-started-by, .bbp-topic-title .bbp-topic-started-by a{font-size: 11px; }
+	
 	.bbp-topic-title a, 
-	.bbp-forum-title{
+	#bbLoop .bbp-forum-title{
 		font-size: 1.3em;
 		line-height: 1.6em;
 		
 	}
+		
+		.bbp-topic-voice-count, 
+		.bbp-topic-reply-count, 
+		.bbp-topic-freshness, 
+		#content p.bbp-topic-meta, 
+		#content p.bbp-topic-meta a{
+			font-family: 'Lucida Grande', arial, helvetica;
+			font-size: .9em;
+		}
+		
+		#content p.bbp-topic-meta, #content p.bbp-topic-meta a {
+			margin-bottom: 0;
+			font-size: 10px;
+			
+		}
 		
 	.bbp-form .avatar{display: none;}
 	article.hentry .bbp-reply-content{text-align: left;}
@@ -314,10 +338,6 @@ a.bbp-reply-permalink {
 		-webkit-border-radius: 5px;
 		}
 
-#content p.bbp-topic-meta {
-	margin-bottom: 0;
-	font-size: 11px;
-}
 
 #content p.bbp-topic-meta span {
 	white-space: nowrap;
@@ -328,7 +348,7 @@ a.bbp-reply-permalink {
 
 #content table tbody tr .bbp-forum-description p {
 	margin-bottom: 0;
-	font-size: 13px;
+	font-size: 11px;
 	font-style: italic;
 }
 #content table tbody tr ul.bbp-forums {
@@ -639,7 +659,6 @@ input[type="password"] {
 }
 
 .bbp-logged-in h4 {
-	font-weight: bold;
 	font-size: 1.3em;
 	clear: none;
 	margin-bottom: 10px;

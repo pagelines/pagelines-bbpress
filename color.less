@@ -1,14 +1,11 @@
 @bbpress-contrast = darken( @pl-base, @invert-dark  );
 
-
-.bbp-topic-title a, .bbp-forum-title{
+#bbLoop .bbp-topic-title a, #bbLoop .bbp-forum-title{
 	color: @pl-text;
 }
 
-
-#bbloop .odd {	
+#bbloop .odd{	
 	background-color: @bbpress-contrast;
-
 }
 
 table.bbp-forums th, table.bbp-topics th,
@@ -16,11 +13,11 @@ table.bbp-topic th, table.bbp-replies th {
 	background-color: @bbpress-contrast;
 }
 
-#content table tbody tr.odd td {
+#bbloop table tbody tr.odd td {
 	background-color: lighten(@bbpress-contrast, 4);
 }
 
-#content table tbody tr.even td {
+#bbloop table tbody tr.even td {
 	background-color: lighten(@bbpress-contrast, 7);
 }
 
@@ -28,6 +25,11 @@ table.bbp-topic th, table.bbp-replies th {
 #content table.bbp-topic tr.bbp-topic-header td{
 	background-color: lighten(@bbpress-contrast, 9);
 	color: fadeout(@pl-text, 40%);
+}
+
+.bbp-login-form input, .bbp-login-form input[type="password"]{
+	border: 1px solid darken(@bbpress-contrast, 5);
+	background-color: @bbpress-contrast;
 }
 
 #content fieldset.bbp-form,
