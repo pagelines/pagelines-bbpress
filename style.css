@@ -674,6 +674,7 @@ input[type="password"] {
 .bbp-logged-in h4 {
 	font-size: 1.3em;
 	clear: none;
+	font-weight: normal;
 	margin-bottom: 10px;
 }
 
