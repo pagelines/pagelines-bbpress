@@ -1,0 +1,102 @@
+#page #bbpress-forums {
+	div.bbp-template-notice.info {
+		border: 1px solid transparent;
+		background-color: @baseContrast;
+		color: @pl-text;
+	}
+
+	li.bbp-header, 
+	li.bbp-footer {
+		background: @baseContrast;
+		border-top: none;
+	}
+	ul.bbp-lead-topic, 
+	ul.bbp-topics, 
+	ul.bbp-forums, 
+	ul.bbp-replies {
+		border:none;
+	}
+	.bbp-topic-title .bbp-topic-permalink{
+		font-size: @h4Size;
+	}
+	.bbp-author-avatar img{
+		margin-bottom: 0;
+		padding: 1px;
+		border: 1px solid @baseContrastDark;
+	}
+	div.odd, 
+	ul.odd{
+		background: @baseContrastSlight;
+	}
+	li.bbp-body ul.forum,
+	li.bbp-body ul.topic {
+		border-top: none;
+	}
+	div.even, 
+	ul.even {
+		background-color: lighten(@baseContrastSlight, 2%);
+	}
+	div.bbp-topic-header, 
+	div.bbp-reply-header {
+		background-color: @baseContrastDark;
+		border-top: none;
+	}
+	span.bbp-author-ip{
+		color: @textColorLight;
+	}
+	
+	// Highlight Always yellow w/ !important in bbPress core
+	.bbp-topics, .bbp-topics-front, .bbp-forum-content{
+		ul.sticky, ul.super-sticky{
+			color: rgba(0,0,0,.5);
+			a{ color: #000 }
+		}
+	}
+	
+	
+	.bbp-form{
+		border: 1px solid @baseContrast;
+		
+		legend{
+			font-size: @h6Size;
+			color: @textColorSubtle;
+			display: inline;
+			width: auto;
+			border-bottom: none;
+			margin-bottom: 5px;
+		}
+	}
+	div.bbp-the-content-wrapper{
+		 td.mceStatusbar {
+			background: @baseContrast;
+		}
+		.mceIframeContainer{
+			background: @baseContrastSlight;
+			font-family: courier;
+			body{
+				#font > #family > .monospace;
+			}
+		}
+		.wp-editor-container{
+			border: 1px solid @baseContrastDark;
+		}
+		.mceToolbar{
+			border-bottom: 1px solid @baseContrastDark;
+			#gradient > .vertical(@baseContrastSlight,@baseContrastDark );
+		}
+		.wp-switch-editor{
+			border-color: @baseContrastDark;
+			border-bottom: none;
+			background: @baseContrastSlight;
+		}
+	}
+
+	.bbp-admin-links, 
+	.bbp-topic-header, 
+	.bbp-reply-header{
+		color: @textColorLight;
+		a{
+			color: @textColorSubtle;
+		}
+	}
+}

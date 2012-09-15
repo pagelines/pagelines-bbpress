@@ -2,12 +2,12 @@
 /*
 Plugin Name: bbPress for PageLines
 Plugin URI: http://www.pagelines.com/
-Description: Adds support for BBPress inside PageLines Framework.
-Version: 1.0.6
+Description: Adds support for bbPress inside PageLines Framework.
+Version: 2.0.0
 Author: PageLines
 Author URI: http://www.pagelines.com
 PageLines: true
-Demo: http://demo.pagelines.com/framework/forums/
+Demo: http://demo.pagelines.me/forums/
 */
 
 class PageLinesBBPress {
@@ -27,8 +27,8 @@ class PageLinesBBPress {
 			return;
 
 		add_filter( 'pagelines_meta_blacklist', array( &$this, 'remove_meta' ), 10, 1 );
-		add_filter( 'pagelines_lesscode', array( &$this, 'bb_less' ), 10, 1 );
-		add_action( 'wp_print_styles', array( &$this, 'head_css' ) );
+		add_filter( 'pagelines_lesscode', array( &$this, 'bb_less' ), 10, 17 );
+		add_action( 'bbp_enqueue_scripts', array( &$this, 'head_css' ), 15 );
 		add_filter( 'postsmeta_settings_array', array( &$this, 'bb_meta' ), 10, 1 );
 		add_filter( 'pagelines_sections_dirs', array( &$this, 'bb_add_section' ));
 		add_action( 'template_redirect', array( &$this, 'bb_integration' ) );	
@@ -50,27 +50,20 @@ class PageLinesBBPress {
 	function bb_less( $less ) {
 		
 		
-		$less .= pl_file_get_contents( sprintf( '%s/color.less', $this->base_dir ) );
+		$less .= pl_file_get_contents( sprintf( '%s/style.less', $this->base_dir ) );
 		
 		return $less;
 	}
 	
 	/**
-	 *	Remove BB css and add our own.
+	 *	Remove BB css 
 	 */
 	function head_css() {
 			
-		if ( !is_bbpress() )
-			return;
-		
+		wp_deregister_style( 'bbp-twentyten-bbpress' );
+		//wp_deregister_style( 'bbp-default-bbpress' );
 		wp_deregister_style( 'bbpress-style' );
-		
-		
-		
-		$style = sprintf( '%s/%s', $this->base_url, 'style.css' );
-		
-		wp_register_style( 'plbb-styles', $style );
-		wp_enqueue_style( 'plbb-styles' );		
+		wp_deregister_style( 'twentyten' );
 	
 	}
 	

@@ -12,6 +12,11 @@
 
 == Changelog ==
 
+= 2.0.0 =
+* Redesigned to support bbPress 2.1.2
+* Better color handling
+* Support for CSS Layout bbPress
+
 = 1.0.1 -> 1.0.6 =
 * General refinements
 * Usability enhancements
