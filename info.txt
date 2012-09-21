@@ -12,6 +12,9 @@
 
 == Changelog ==
 
+= 2.0.1 =
+* Fixed for status closed post text color
+
 = 2.0.0 =
 * Redesigned to support bbPress 2.1.2
 * Better color handling
