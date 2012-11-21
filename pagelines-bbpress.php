@@ -45,7 +45,7 @@ class PageLinesBBPress {
 	function bb_less( $less ) {
 		
 		
-		$less .= pl_file_get_contents( sprintf( '%s/color.less', $this->base_dir ) );
+		$less .= pl_file_get_contents( sprintf( '%s/style.less', $this->base_dir ) );
 		
 		return $less;
 	}
