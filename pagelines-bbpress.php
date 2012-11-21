@@ -2,8 +2,8 @@
 /*
 Plugin Name: bbPress for PageLines
 Plugin URI: http://www.pagelines.com/
-Description: Adds support for bbPress inside PageLines Framework.
-Version: 2.0.0
+Description: Adds support for BBPress inside PageLines Framework.
+Version: 2.0.2
 Author: PageLines
 Author URI: http://www.pagelines.com
 PageLines: true
@@ -22,25 +22,20 @@ class PageLinesBBPress {
 		
 		// register plugin hooks...
 		$this->plugin_hooks();
-		
-		if ( ! function_exists( 'is_bbpress' ) )
-			return;
 
 		add_filter( 'pagelines_meta_blacklist', array( &$this, 'remove_meta' ), 10, 1 );
-		add_filter( 'pagelines_lesscode', array( &$this, 'bb_less' ), 10, 17 );
-		add_action( 'bbp_enqueue_scripts', array( &$this, 'head_css' ), 15 );
+		add_filter( 'pagelines_lesscode', array( &$this, 'bb_less' ), 10, 1 );
 		add_filter( 'postsmeta_settings_array', array( &$this, 'bb_meta' ), 10, 1 );
+		add_filter( 'admin_init', array( &$this, 'plbb_activate' ));
 		add_filter( 'pagelines_sections_dirs', array( &$this, 'bb_add_section' ));
-		add_action( 'template_redirect', array( &$this, 'bb_integration' ) );	
+		add_action( 'template_redirect', array( &$this, 'bb_integration' ), 999);
 	}
-	
-	
 	/**
 	 *	Plugin hooks
 	 */
 	function plugin_hooks() {
 		
-		register_activation_hook( $this->base_file, array( &$this, 'plbb_activate' ) );
+		register_activation_hook( $this->base_file, array( &$this, 'plbb_sections_reset' ) );
 		register_deactivation_hook( $this->base_file, array( &$this, 'plbb_sections_reset' ) );
 	}
 	
@@ -50,21 +45,9 @@ class PageLinesBBPress {
 	function bb_less( $less ) {
 		
 		
-		$less .= pl_file_get_contents( sprintf( '%s/style.less', $this->base_dir ) );
+		$less .= pl_file_get_contents( sprintf( '%s/color.less', $this->base_dir ) );
 		
 		return $less;
-	}
-	
-	/**
-	 *	Remove BB css 
-	 */
-	function head_css() {
-			
-		wp_deregister_style( 'bbp-twentyten-bbpress' );
-		//wp_deregister_style( 'bbp-default-bbpress' );
-		wp_deregister_style( 'bbpress-style' );
-		wp_deregister_style( 'twentyten' );
-	
 	}
 	
 	/**
@@ -94,25 +77,25 @@ class PageLinesBBPress {
 	 */
 	function bb_integration() {
 			
-			if ( ! is_bbpress() )
+			if ( ! function_exists( 'ploption' ) )
+				return;
+
+			if ( ! function_exists( 'is_bbpress' ) )
 				return;
 		
+			if ( ! is_bbpress() )
+				return;
+
 			if ( bbp_is_forum_archive() )
 				new PageLinesIntegration( 'forum_archive' );
-			else
-
-			if ( bbp_is_single_forum() )
+			elseif ( bbp_is_single_forum() )
 				new PageLinesIntegration( 'forum' );
-			else	
-
-			if ( bbp_is_single_topic() )
+			elseif ( bbp_is_single_topic() )
 				new PageLinesIntegration( 'topic' );
+			elseif ( bbp_is_topic_archive() )
+				new PageLinesIntegration( 'topics' );			
 			else
-				if ( bbp_is_topic_archive() )
-					new PageLinesIntegration( 'topics' );
-				
-			else
-				new PageLinesIntegration( 'forum_archive' );
+				new PageLinesIntegration( 'topic' );
 	}
 	
 	/**
@@ -154,13 +137,18 @@ class PageLinesBBPress {
 	 *	Reset sections.
 	 */
 	function plbb_sections_reset() {
-
+		
+		if ( ! function_exists( 'ploption' ) )
+			return;
 		global $load_sections;
 		delete_transient( 'pagelines_sections_cache' );
 		$load_sections->pagelines_register_sections( true, false );
 	}
 
 	function plbb_activate() {
+		
+		if ( ! function_exists( 'ploption' ) )
+			return;
 
 		$bb_templates = array(
 			'forum_archive',
@@ -173,10 +161,27 @@ class PageLinesBBPress {
 		$map = get_option( PAGELINES_TEMPLATE_MAP );
 
 		foreach ( $bb_templates as $template ) {
-			$map['main']['templates'][$template]['sections'][0] = 'PageLinesBBLoop';
+
+			$default = array( 
+				'name' => $template,
+				'sections' => array( 
+					'PageLinesBBLoop')
+					);
+
+			if ( ! isset( $map['main']['templates'][$template] ) )
+				$map['main']['templates'][$template] = $default;
+
+			if ( ! in_array( 'PageLinesBBLoop', $map['main']['templates'][$template]['sections'] ) )
+				$map['main']['templates'][$template]['sections'][] = 'PageLinesBBLoop';
+
+			foreach ( $map['main']['templates'][$template]['sections'] as $n => $t )
+				if( 'PageLinesPostLoop' == $t )
+					unset( $map['main']['templates'][$template]['sections'][$n]);
+					
+			$map['main']['templates'][$template] = array_unique( $map['main']['templates'][$template] );
 		}
+
 		update_option( PAGELINES_TEMPLATE_MAP, $map );
-		$this->plbb_sections_reset();
 	}
 } // /class
 

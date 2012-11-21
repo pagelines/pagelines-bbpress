@@ -12,7 +12,10 @@ class PageLinesBBLoop extends PageLinesSection {
 
    function section_template() { 
 
-		the_content();
+		while (have_posts()) :
+			the_post();
+			the_content();
+		endwhile;
 	}
 
 }
